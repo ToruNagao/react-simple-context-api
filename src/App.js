@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { createContext } from 'react';
 import './App.css';
+
+// Need a provider to wrap children component
+import FruitProvider from './context/fruits_context'
+
+// Children component ie. consumer
+import FruitsList from './components/fruits_list';
+import FruitsCount from './components/fruits_count';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Wrap children compoenent with the provider*/}
+      <FruitProvider>
+        <FruitsList />
+        <FruitsCount />
+      </FruitProvider>
     </div>
   );
 }
